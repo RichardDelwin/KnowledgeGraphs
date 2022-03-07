@@ -1,23 +1,12 @@
 # [Identifying Meaningful Citations]()
 
-## [[Marco Valenzuela]]; [[Vu Ha]]; [[Oren Etzioni]]
-
-### 2014
+## Marco Valenzuela, Vu Ha, Oren Etzioni
 
 ## Abstract
 We introduce the novel task of identifying important citations in scholarly literature, i.e., citations that indicate that the cited work is used or extended in the new effort. We believe this task is a crucial component in algorithms that detect and follow research topics and in methods that measure the quality of publications. We model this task as a supervised classification problem at two levels of detail: a coarse one with classes (important vs. non-important), and a more detailed one with four importance classes. We annotate a dataset of approximately 450 citations with this information, and release it publicly. ==We propose a supervised classification approach that addresses this task with a battery of features that range from citation counts to where the citation appears in the body of the paper, and show that, our approach achieves a precision of 65% for a recall of 90%.
 
 ## Key concepts
 #support_vector_machines; #search_engine; #citation_indexing
-
-## Quote
-> We describe a supervised classification approach for identifying meaningful citations, which uses a battery of features ranging from citation counts to where the citation appears in the body of the paper
-
-
-## Figures
-![Figure 1. Precision-recall curve for our baseline and two classifiers: SVM with a RBF kernel and random forests](https://engine.scholarcy.com/images/IdentifyingMeaningfulCitations.pdf_nry82_q6_images_f33tc9eh/img-001.png)
-![Figure 2. Learning curve for the SVM classifier with RBF kernel](https://engine.scholarcy.com/images/IdentifyingMeaningfulCitations.pdf_nry82_q6_images_f33tc9eh/img-002.png)
-![Figure 3. Stanford Parser output example. Screenshot of the scientific literature search engine that uses this work. For each cited paper, the top right block lists the important citations out of the total citations found in the indexed corpus](https://engine.scholarcy.com/images/IdentifyingMeaningfulCitations.pdf_nry82_q6_images_f33tc9eh/img-003.png)
 
 ## Key points
 - Tracking citations is an important component of analyzing scholarly big data
