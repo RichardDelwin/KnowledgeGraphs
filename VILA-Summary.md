@@ -1,0 +1,213 @@
+[[Valenzuela_et+al_IdentifyingMeaningfulCitations_2014]]
+
+# [Identifying Meaningful Citations]()
+
+## [[Marco Valenzuela]]; [[Vu Ha]]; [[Oren Etzioni]]
+
+### 2014
+
+## Abstract
+==We introduce the novel task of identifying important citations in scholarly literature, i.e., citations that indicate that the cited work is used or extended in the new effort==. We believe this task is a crucial component in algorithms that detect and follow research topics and in methods that measure the quality of publications. ==We model this task as a supervised classification problem at two levels of detail: a coarse one with classes (important vs. non-important), and a more detailed one with four importance classes==. We annotate a dataset of approximately 450 citations with this information, and release it publicly. ==We propose a supervised classification approach that addresses this task with a battery of features that range from citation counts to where the citation appears in the body of the paper, and show that, our approach achieves a precision of 65% for a recall of 90%==.
+
+## Key concepts
+#support_vector_machines; #search_engine; #citation_indexing
+
+## Quote
+> We describe a supervised classification approach for identifying meaningful citations, which uses a battery of features ranging from citation counts to where the citation appears in the body of the paper
+
+
+## Figures
+![Figure 1. Precision-recall curve for our baseline and two classifiers: SVM with a RBF kernel and random forests](https://engine.scholarcy.com/images/IdentifyingMeaningfulCitations.pdf_nry82_q6_images_f33tc9eh/img-001.png)
+![Figure 2. Learning curve for the SVM classifier with RBF kernel](https://engine.scholarcy.com/images/IdentifyingMeaningfulCitations.pdf_nry82_q6_images_f33tc9eh/img-002.png)
+![Figure 3. Stanford Parser output example. Screenshot of the scientific literature search engine that uses this work. For each cited paper, the top right block lists the important citations out of the total citations found in the indexed corpus](https://engine.scholarcy.com/images/IdentifyingMeaningfulCitations.pdf_nry82_q6_images_f33tc9eh/img-003.png)
+
+## Tables
+|                                                                    -                                                                     |   We introduce the novel task of identifying important ci-   |                 incidental:                  |   Discriminative models have recently been   |    -    |                      -                      |
+|------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|----------------------------------------------|----------------------------------------------|---------|---------------------------------------------|
+|                                                                                                                                          |tations in scholarly literature, i.e., citations that indicate|related                                       |proved to be more effective than genera-      |         |                                             |
+|                                                                                                                                          |that the cited work is used or extended in the new ef-        |work                                          |tive models in some NLP tasks, e.g., parsing  |         |                                             |
+|                                                                                                                                          |fort. We believe this task is a crucial component in al-      |(Collins 2000), POS tagging (Collins 2002) and|                                              |         |                                             |
+|                                                                                                                                          |gorithms that detect and follow research topics and in        |LM for speech recognition (Roark et al. 2004).|                                              |         |                                             |
+|                                                                                                                                          |methods that measure the quality of publications. We          |incidental:                                   |Online baselines include Top-1 Perceptron     |         |                                             |
+|                                                                                                                                          |model this task as a supervised classification problem at     |comparison                                    |(Collins, 2002), Top-1 Passive-Aggressive     |         |                                             |
+|                                                                                                                                          |vs. non-important), and a more detailed one with four         |McDonald et al., 2004).                       |                                              |         |                                             |
+|                                                                                                                                          |importance classes. We annotate a dataset of approxi-         |important:                                    |Here, we follow the definition of Collins per-|         |                                             |
+|                                                                                                                                          |mately 450 citations with this information, and release       |using the                                     |ceptron (Collins, 2002).                      |         |                                             |
+|measure the quality of published works, to detect emerging            Table 1: Citation examples for (Collins, 2002), listed in increasing|                                                              |                                              |                                              |         |                                             |
+|research topics, and to follow evolving ones.                                                                                             |order of importance.                                          |                                              |                                              |         |                                             |
+|                                                                                                                                          |In this work we argue that not all citations are equal.       |                                              |                                              |         |                                             |
+|While some indeed indicate that the cited work is used or,                                                                                |                                                              |                                              |                                              |         |                                             |
+|                                                                                                                                          |2. We annotate a dataset of approximately 450 citations with  |                                              |                                              |         |                                             |
+|more importantly, extended in the new publication, some are                                                                               |                                                              |                                              |                                              |         |                                             |
+|                                                                                                                                          |Citation Type                                                 |Fine-grained Label                            |Coarse Label                                  |Citation |Citation Text                                |
+|                                                                                                                                          |Related work                                                  |0                                             |Incidental                                    |Type     |                                             |
+|                                                                                                                                          |Comparison                                                    |1                                             |Incidental                                    |Algorithm|Figure 3: Stanford Parser output example.    |
+|                                                                                                                                          |Using the work                                                |2                                             |Important                                     |name     |                                             |
+|                                                                                                                                          |Extending the work                                            |3                                             |Important                                     |Algorithm|We implement a part-of-speech tagger with av-|
+|                                                                                                                                          |name                                                          |eraged perceptron.                            |                                              |         |                                             |
+# Table 2: Citation annotation labels.                   Algorithm      We implemented the MXPOST tagger and in-
+|                                                            -                                                            |                  name                  |       tegrated it with our algorithm.        |                 -                  |                             -                              |
+|-------------------------------------------------------------------------------------------------------------------------|----------------------------------------|----------------------------------------------|------------------------------------|------------------------------------------------------------|
+|and metadata generated by (Elkiss et al. 2008). There were                                                               |Author +                                |However, the application of the Yarowsky      |                                    |                                                            |
+|106,509 citations among them. We annotated 465 of these                                                                  |Algorithm                               |algorithm to NER involves several domain-     |                                    |                                                            |
+|citations, represented as tuples of (cited paper, citing paper),                                                         |name                                    |specific choices as will become evident below.|                                    |                                                            |
+|with ordinal labels ranging from 0 to 3, in increasing order                                                             |Author                                  |The behaviour is slightly different here, with|                                    |                                                            |
+|these fine-grained labels, such that 0 and 1 indicate inciden-     Table 3: Indirect citations by name of first author or|                                        |                                              |                                    |                                                            |
+|tal citations, and 2 and 3 indicate important citations. Table 2                                                         |name/description of the cited algorithm.|                                              |                                    |                                                            |
+|summarizes both the fine-grained and the coarse label sets.                                                              |                                        |                                              |                                    |                                                            |
+|                                                                                                                         |Cited paper id                          |Verb                                          |Noun phrase                         |author. The intuition behind this feature is that shared au-|
+|                                                                                                                         |P05-1044                                |proposed                                      |a new objective function            |thors indicate that the new work is likely to be an exten-  |
+|                                                                                                                         |J96-1002                                |presented                                     |a Maximum Entropy Approach          |sion of the cited paper.                                    |
+|                                                                                                                         |A00-1031                                |reports                                       |96.7% overall accuracy              |                                                            |
+|                                                                                                                         |W06-1643                                |used                                          |skip-chain Conditional Random Fields|• (F5) Is considered helpful (Boolean): This feature is set |
+|                                                                                                                         |P08-1108                                |combined                                      |MSTParser and MaltParser            |to true if a sentence in which a citation occurs contains   |
+|                                                                                                                         |W02-1001                                |extended                                      |the perceptron algorithm            |phrases such as “we follow” or “we used”, which are hints   |
+|                                                                                                                         |P02-1018                                |reports                                       |93% precision and 83% recall        |that the author of the citing work considers the cited paper|
+# Table 4: Examples of noun phrases following citations. The pa-        • (F6) Citation appears in table or caption (Boolean): Set
+|per ids are from the ACL ontology; to retrieve the paper content|                        -                        |                            -                            |          -          |     -      |
+|----------------------------------------------------------------|-------------------------------------------------|---------------------------------------------------------|---------------------|------------|
+|                                                                |Citation                                         |Paper title                                              |Nickname             |TF-IDF score|
+|                                                                |P03-1054                                         |Accurate Unlexicalized Parsing                           |stanford parser      |1236.89     |
+|                                                                |W04-3252                                         |TextRank: Bringing Order into Texts                      |textrank             |319.33      |
+|                                                                |N07-1051                                         |Improved Inference for Unlexicalized Parsing             |berkeley parser      |506.45      |
+|                                                                |A00-1031                                         |TnT – A Statistical Part-of-Speech Tagger                |tnt                  |1041.02     |
+|                                                                |W96-0213                                         |A Maximum Entropy Model for Part-Of-Speech Tagging       |mxpost               |377.71      |
+|                                                                |W02-1001                                         |Discriminative Training Methods for Hidden Markov Models:|structured perceptron|356.06      |
+|                                                                |Theory and Experiments with Perceptron Algorithms|                                                         |                     |            |
+|                                                                |W02-1001                                         |Discriminative Training Methods for Hidden Markov Models:|averaged perceptron  |373.52      |
+# Table 5: Identified algorithm names/descriptions.
+| - |                   1.00                    | -  |                              -                              |
+|---|-------------------------------------------|---:|-------------------------------------------------------------|
+|   |                                          1|    |                                                             |
+|   |Only: is useful (F5)                       |0.22|score of 115/119 = 96.6%, and a strict precision of          |
+|   |Only: direct citations / all citations (F8)|0.22|46/119 = 38.7%. This analysis indicates that the n-grams     |
+|   |Only: research field (F12)                 |0.22|extracted are almost always relevant (hence the high lenient |
+|   |Only: in figure/table (F6)                 |0.20|score), but seldom complete (hence the low strict score).    |
+|   |Only: indirect citations: author names (F3)|0.19|For example, for the above paper, our algorithm extracts the |
+|   |Only: indirect citations: descriptions (F3)|0.17|following descriptions: “stanford named”, “named”, “recog-   |
+|   |Only: inverse number of references (F7)    |0.17|nizer”, “named entity”, “entity recognizer”, “stanford”, and |
+|   |Only: PageRank (F10)                       |0.17|“stanford ner”. While these are clearly relevant for this pa-|
+|   |Only: total citing papers (F11)            |0.16|per, the incomplete descriptions, e.g., “named entity”, may  |
+# Table 6: Performance of the system when using individual fea-              tations, and (b) they may cause spurious citations, when
+|ture groups, for a recall of 0.90. The feature groups are listed in|  multiple incomplete descriptions that form a complete one  |
+|-------------------------------------------------------------------|-------------------------------------------------------------|
+|descending order of their contribution.                            |(e.g., “stanford named” and “entity recognizer”) match in    |
+|                                                                   |the same sentence. In this work, we mitigate the latter is-  |
+|                                                                   |sue by counting sentences rather than individual indirect ci-|
+|The best performing features are the direct citations (both        |                                                             |
+
+
+## Key points
+- Tracking citations is an important component of analyzing scholarly big data
+- We propose a supervised classification approach that separates important from incidental citations using a battery of features, ranging from citation counts to where the citation appears in the body of the paper
+- This paper is among the first to tackle the important task of identifying important citations, which, we believe, will improve many applications that focus on tracking scholarly citations, such as detecting and following research trends, or quantitatively measuring the quality and impact of publications
+- We describe a supervised classification approach for identifying meaningful citations, which uses a battery of features ranging from citation counts to where the citation appears in the body of the paper
+- Using the previously described dataset, we show that our approach performs well, obtaining a precision of 0.65 for a high recall of 0.9
+
+## Synopsis
+
+### Introduction
+In this work we argue that not all citations are equal.
+While some indicate that the cited work is used or, more importantly, extended in the new publication, some are less important, e.g., they discuss the cited work in the context of related work that does not directly impact the new effort.
+We further argue that because current citation tracking algorithms do not distinguish between important vs incidental citations, all of the above applications are negatively affected
+
+### Methods
+0.6 svm random forest baseline models on a different citation, by training on all remaining ones.
+For this experiment, we used only the binary coarse labels, i.e., important vs incidental, and employed the standard precision, recall, and F1 scores as evaluation measures, considering the important citations as the positive class.
+To obtain the P/R curve, we used various thresholds on the classifier confidence.
+Both classifiers are compared against a baseline that randomly assigns the “important” label using a probability p, which varies from 0 to 1.
+The red dot in the figure corresponds to a value of p equal to the the prior distribution of the “important” label in the entire corpus (i.e., 14.6%)
+
+### Findings
+We propose a supervised classification approach that addresses this task with a battery of features that range from citation counts to where the citation appears in the body of the paper, and show that, our approach achieves a precision of 65% for a recall of 90%
+
+### Discussion
+One of the strengths of this work is its immediate applicability to a real-world problem.
+We have incorporated our citation classifier into a scientific literature search engine, such that users can immediately identify the most important followup work for a given cited paper.
+The example highlights that of the ten papers that cite the paper “The infinite HMM for unsupervised PoS tagging” only two are considered important and are shown first.
+In future work we will improve the extraction of the paper description and, correspondingly, of the indirect citations, by implementing tiling algorithms that merge incomplete descriptions.
+We will continue to improve the features used to represent a citation.
+We will explore different ways of normalizing citation counts, e.g., by dividing by the total number of references and/or citations in the citing paper.
+We will evaluate new features like the rhetorical function of citations ([^Teufel_et+al_2006_a])
+
+### Conclusion
+This paper is among the first to tackle the important task of identifying important citations, which, we believe, will improve many applications that focus on tracking scholarly citations, such as detecting and following research trends, or quantitatively measuring the quality and impact of publications.
+In addition to introducing and formalizing this task, our contributions include a novel dataset of 465 citation tuples, which is publicly available.
+We describe a supervised classification approach for identifying meaningful citations, which uses a battery of features ranging from citation counts to where the citation appears in the body of the paper.
+Using the previously described dataset, we show that our approach performs well, obtaining a precision of 0.65 for a high recall of 0.9
+
+
+## Study subjects
+
+### 20527 papers
+- Our method performs well, obtaining a precision of 65% for a recall of 90%. ==To address this task, we used a collection of 20,527 papers from the ACL anthology1, together with their citation graph==. 1http://www.aclweb.org/anthology/
+
+### 50 papers
+- In this work we focus solely on the precision of the set of extracted descriptions, which are responsible for the indirect citations.6. ==For this purpose, we selected a subset of 50 papers from the larger corpus of +20K papers. 12 of these papers appear as cited papers in our smaller, annotated citation corpus==. For these 50 papers, we collected all the descriptions automatically extracted by our approach
+
+### 50 papers
+- For this purpose, we selected a subset of 50 papers from the larger corpus of +20K papers. 12 of these papers appear as cited papers in our smaller, annotated citation corpus. ==For these 50 papers, we collected all the descriptions automatically extracted by our approach==. The descriptions in this set total 119
+
+## Data analysis
+- #method/post_hoc_analysis
+- #method/yarowsky_algorithm
+
+## Findings
+- We propose a supervised classification approach that addresses this task with a battery of features that range from citation counts to where the citation appears in the body of the paper, and show that, our approach achieves a precision of 65% for a recall of 90%
+
+## Counterpoint to earlier claims
+- There has been considerable effort in the past decade on citation indexing systems ([^Giles_et+al_1998_a]; [^Lawrence_et+al_1999_a]; [^Councill_et+al_2006_a]) and on algorithms that analyze these citation graphs to, e.g., understand the flow of research topics in the literature, model the influence of specific papers in their field, or recommend citations for a given topic; see, inter alia, ([^Dietz_et+al_2007_a]; [^Gruber_et+al_2008_a]; [^Nallapati_et+al_2008_a]; [^Daume_2009_a]; [^Sun_et+al_2009_a]; [^Wong_et+al_2009_a]; [^Nallapati_et+al_2011_a]). ==However, by and large, these works assume that all citations are important, which we dispute in our work==
+
+## Contributions
+- To our knowledge, this paper is among the first to tackle the important task of identifying important citations, which, we believe, will ultimately improve many applications that focus on tracking scholarly citations, such as detecting and following research trends, or quantitatively measuring the quality and impact of publications.<br/><br/>In addition to introducing and formalizing this task, our contributions include a novel dataset of 465 citation tuples, which is publicly available8. We also describe a supervised classification approach for identifying meaningful citations, which uses a battery of features ranging from citation counts to where the citation appears in the body of the paper. Using the previously described dataset, we show that our approach performs well, obtaining a precision of 0.65 for a high recall of 0.9.
+
+## Limitations
+- A remaining limitation of our approach is that we currently use unigrams and bigrams, which might not to be sufficient to capture longer descriptions. We analyze this issue later in the paper.
+
+## Future work
+- We annotate a dataset of approximately 450 citations with citation importance information. The dataset is publicly available in the hope that it will foster further research on this topic.
+- In this work, we mitigate the latter issue by counting sentences rather than individual indirect citations. In future work, we will explore more complex solutions, such as n-gram tiling ([^Dumais_et+al_2002_a]), which combine multiple incomplete n-grams to form a complete description.
+- This work is far from complete. In future work we will improve the extraction of the paper description and, correspondingly, of the indirect citations, by implementing tiling algorithms that merge incomplete descriptions. We will continue to improve the features used to represent a citation. We will explore different ways of normalizing citation counts, e.g., by dividing by the total number of references and/or citations in the citing paper. We will evaluate new features like the rhetorical function of citations ([^Teufel_et+al_2006_a]).
+
+## Data and code
+- The dataset is publicly available in the hope that it will foster further research on this topic
+- https://github.com/knowitall/taggers
+
+
+## References
+[^Councill_et+al_2006_a]: Councill, H. L. I.; Lee, W.-C.; and Giles, C. L. 2006. Citeseerx: an architecture and web service design for an academic document search engine. In International Conference on World Wide Web. [[Councill_et+al_CiteseerxArchitectureServiceDesignAcademic_2006]] [OA](https://scholar.google.co.uk/scholar?q=Councill%2C%20H.L.I.%20Lee%2C%20W.-C.%20Giles%2C%20C.L.%20Citeseerx%3A%20an%20architecture%20and%20web%20service%20design%20for%20an%20academic%20document%20search%20engine%202006) [GScholar](https://scholar.google.co.uk/scholar?q=Councill%2C%20H.L.I.%20Lee%2C%20W.-C.%20Giles%2C%20C.L.%20Citeseerx%3A%20an%20architecture%20and%20web%20service%20design%20for%20an%20academic%20document%20search%20engine%202006) 
+
+[^Daume_2009_a]: Daume III, H. 2009. Markov random topic fields. In ACLIJCNLP. [[Daume__2009]] [OA](https://scholar.google.co.uk/scholar?q=Daume%20III%20H%202009%20Markov%20random%20topic%20fields%20In%20ACLIJCNLP) [GScholar](https://scholar.google.co.uk/scholar?q=Daume%20III%20H%202009%20Markov%20random%20topic%20fields%20In%20ACLIJCNLP) 
+
+[^Dietz_et+al_2007_a]: Dietz, L.; Bickel, S.; and Scheffer, T. 2007. Unsupervised prediction of citation influences. In International Conference on Machine Learning. [[Dietz_et+al_UnsupervisedPredictionCitationInfluences_2007]] [OA](https://engine.scholarcy.com/oa_version?query=Dietz%2C%20L.%20Bickel%2C%20S.%20Scheffer%2C%20T.%20Unsupervised%20prediction%20of%20citation%20influences%202007) [GScholar](https://scholar.google.co.uk/scholar?q=Dietz%2C%20L.%20Bickel%2C%20S.%20Scheffer%2C%20T.%20Unsupervised%20prediction%20of%20citation%20influences%202007) [Scite](https://engine.scholarcy.com/scite_url?query=Dietz%2C%20L.%20Bickel%2C%20S.%20Scheffer%2C%20T.%20Unsupervised%20prediction%20of%20citation%20influences%202007)
+
+[^Dumais_et+al_2002_a]: Dumais, S.; Banko, M.; Brill, E.; Lin, J.; and Ng, A. 2002. Web question answering: Is more always better? In SIGIR. [[Dumais_et+al_QuestionAnsweringMoreAlwaysBetter_2002]] [OA](https://engine.scholarcy.com/oa_version?query=Dumais%2C%20S.%20Banko%2C%20M.%20Brill%2C%20E.%20Lin%2C%20J.%20Web%20question%20answering%3A%20Is%20more%20always%20better%3F%202002) [GScholar](https://scholar.google.co.uk/scholar?q=Dumais%2C%20S.%20Banko%2C%20M.%20Brill%2C%20E.%20Lin%2C%20J.%20Web%20question%20answering%3A%20Is%20more%20always%20better%3F%202002) [Scite](https://engine.scholarcy.com/scite_url?query=Dumais%2C%20S.%20Banko%2C%20M.%20Brill%2C%20E.%20Lin%2C%20J.%20Web%20question%20answering%3A%20Is%20more%20always%20better%3F%202002)
+
+[^Elkiss_et+al_2008_a]: Elkiss, A.; Shen, S.; Fader, A.; Erkan, G.; States, D.; and Radev, D. 2008. Blind men and elephants: What do citation summaries tell us about a research article? J. Am. Soc. Inf. Sci. Technol. 59(1):51–62. [[Elkiss_et+al_BlindElephantsWhatCitationSummaries_2008]] [OA](https://engine.scholarcy.com/oa_version?query=Elkiss%2C%20A.%20Shen%2C%20S.%20Fader%2C%20A.%20Erkan%2C%20G.%20Blind%20men%20and%20elephants%3A%20What%20do%20citation%20summaries%20tell%20us%20about%20a%20research%20article%3F%202008) [GScholar](https://scholar.google.co.uk/scholar?q=Elkiss%2C%20A.%20Shen%2C%20S.%20Fader%2C%20A.%20Erkan%2C%20G.%20Blind%20men%20and%20elephants%3A%20What%20do%20citation%20summaries%20tell%20us%20about%20a%20research%20article%3F%202008) [Scite](https://engine.scholarcy.com/scite_url?query=Elkiss%2C%20A.%20Shen%2C%20S.%20Fader%2C%20A.%20Erkan%2C%20G.%20Blind%20men%20and%20elephants%3A%20What%20do%20citation%20summaries%20tell%20us%20about%20a%20research%20article%3F%202008)
+
+[^Giles_et+al_1998_a]: Giles, C. L.; Bollacker, K. D.; and Lawrence, S. 1998. Citeseer: an automatic citation indexing system. In ACM conference on Digital libraries. [[Giles_et+al_CiteseerAutomaticCitationIndexingSystem_1998]] [OA](https://engine.scholarcy.com/oa_version?query=Giles%2C%20C.L.%20Bollacker%2C%20K.D.%20Lawrence%2C%20S.%20Citeseer%3A%20an%20automatic%20citation%20indexing%20system%201998) [GScholar](https://scholar.google.co.uk/scholar?q=Giles%2C%20C.L.%20Bollacker%2C%20K.D.%20Lawrence%2C%20S.%20Citeseer%3A%20an%20automatic%20citation%20indexing%20system%201998) [Scite](https://engine.scholarcy.com/scite_url?query=Giles%2C%20C.L.%20Bollacker%2C%20K.D.%20Lawrence%2C%20S.%20Citeseer%3A%20an%20automatic%20citation%20indexing%20system%201998)
+
+[^Gruber_et+al_2008_a]: Gruber, A.; Rosen-Zvi, M.; and Weiss., Y. 2008. Latent topic models for hypertext. In Uncertainty in Artificial Intelligence. [[Gruber_et+al_LatentTopicModelsHypertext_2008]] [OA](https://engine.scholarcy.com/oa_version?query=Gruber%2C%20A.%20Rosen-Zvi%2C%20M.%20Weiss.%2C%20Y.%20Latent%20topic%20models%20for%20hypertext%202008) [GScholar](https://scholar.google.co.uk/scholar?q=Gruber%2C%20A.%20Rosen-Zvi%2C%20M.%20Weiss.%2C%20Y.%20Latent%20topic%20models%20for%20hypertext%202008) [Scite](https://engine.scholarcy.com/scite_url?query=Gruber%2C%20A.%20Rosen-Zvi%2C%20M.%20Weiss.%2C%20Y.%20Latent%20topic%20models%20for%20hypertext%202008)
+
+[^Lawrence_et+al_1999_a]: Lawrence, S.; Giles, C. L.; and Bollacker, K. D. 1999. Digital libraries and autonomous citation indexing. Computer 32(6):67– 71. [[Lawrence_et+al_DigitalLibrariesAutonomousCitationIndexing_1999]] [OA](https://engine.scholarcy.com/oa_version?query=Lawrence%2C%20S.%20Giles%2C%20C.L.%20Bollacker%2C%20K.D.%20Digital%20libraries%20and%20autonomous%20citation%20indexing%201999) [GScholar](https://scholar.google.co.uk/scholar?q=Lawrence%2C%20S.%20Giles%2C%20C.L.%20Bollacker%2C%20K.D.%20Digital%20libraries%20and%20autonomous%20citation%20indexing%201999) [Scite](https://engine.scholarcy.com/scite_url?query=Lawrence%2C%20S.%20Giles%2C%20C.L.%20Bollacker%2C%20K.D.%20Digital%20libraries%20and%20autonomous%20citation%20indexing%201999)
+
+[^Luong_et+al_2010_a]: Luong, M.-T.; Nguyen, T. D.; and Kan, M.-Y. 2010. Logical structure recovery in scholarly articles with rich document features. International Journal of Digital Library Systems (IJDLS) 1(4):1–23. [[Luong_et+al_LogicalStructureRecoveryScholarlyArticles_2010]] [OA](https://engine.scholarcy.com/oa_version?query=Luong%2C%20M.-T.%20Nguyen%2C%20T.D.%20Kan%2C%20M.-Y.%20Logical%20structure%20recovery%20in%20scholarly%20articles%20with%20rich%20document%20features%202010) [GScholar](https://scholar.google.co.uk/scholar?q=Luong%2C%20M.-T.%20Nguyen%2C%20T.D.%20Kan%2C%20M.-Y.%20Logical%20structure%20recovery%20in%20scholarly%20articles%20with%20rich%20document%20features%202010) [Scite](https://engine.scholarcy.com/scite_url?query=Luong%2C%20M.-T.%20Nguyen%2C%20T.D.%20Kan%2C%20M.-Y.%20Logical%20structure%20recovery%20in%20scholarly%20articles%20with%20rich%20document%20features%202010)
+
+[^Manning_et+al_2008_a]: Manning, C. D.; Raghavan, P.; and Schutze, H. 2008. Introduction to information retrieval, volume 1. Cambridge university press Cambridge. [[Manning_et+al_IntroductionInformationRetrievalVolume1_2008]] [OA](https://scholar.google.co.uk/scholar?q=Manning%2C%20C.D.%20Raghavan%2C%20P.%20Schutze%2C%20H.%20Introduction%20to%20information%20retrieval%2C%20volume%201%202008) [GScholar](https://scholar.google.co.uk/scholar?q=Manning%2C%20C.D.%20Raghavan%2C%20P.%20Schutze%2C%20H.%20Introduction%20to%20information%20retrieval%2C%20volume%201%202008) 
+
+[^Mccallum_et+al_2009_a]: McCallum, A.; Schultz, K.; and Singh, S. 2009. FACTORIE: Probabilistic programming via imperatively defined factor graphs. In Neural Information Processing Systems. [[Mccallum_et+al_FactorieProbabilisticProgrammingImperativelyDefined_2009]] [OA](https://engine.scholarcy.com/oa_version?query=McCallum%2C%20A.%20Schultz%2C%20K.%20Singh%2C%20S.%20FACTORIE%3A%20Probabilistic%20programming%20via%20imperatively%20defined%20factor%20graphs%202009) [GScholar](https://scholar.google.co.uk/scholar?q=McCallum%2C%20A.%20Schultz%2C%20K.%20Singh%2C%20S.%20FACTORIE%3A%20Probabilistic%20programming%20via%20imperatively%20defined%20factor%20graphs%202009) [Scite](https://engine.scholarcy.com/scite_url?query=McCallum%2C%20A.%20Schultz%2C%20K.%20Singh%2C%20S.%20FACTORIE%3A%20Probabilistic%20programming%20via%20imperatively%20defined%20factor%20graphs%202009)
+
+[^Nallapati_et+al_2008_a]: Nallapati, R. M.; Ahmed, A.; Xing, E. P.; and Cohen, W. W. 2008. Joint latent topic models for text and citations. In KDD. [[Nallapati_et+al_JointLatentTopicModelsText_2008]] [OA](https://scholar.google.co.uk/scholar?q=Nallapati%2C%20R.M.%20Ahmed%2C%20A.%20Xing%2C%20E.P.%20Cohen%2C%20W.W.%20Joint%20latent%20topic%20models%20for%20text%20and%20citations.%20In%20KDD%202008) [GScholar](https://scholar.google.co.uk/scholar?q=Nallapati%2C%20R.M.%20Ahmed%2C%20A.%20Xing%2C%20E.P.%20Cohen%2C%20W.W.%20Joint%20latent%20topic%20models%20for%20text%20and%20citations.%20In%20KDD%202008) 
+
+[^Nallapati_et+al_2011_a]: Nallapati, R.; McFarland, D.; and Manning, C. 2011. Unsupervised learning of topic specific influences of hyperlinked documents. In Artificial Intelligence and Statistics. [[Nallapati_et+al_UnsupervisedLearningTopicSpecificInfluences_2011]] [OA](https://engine.scholarcy.com/oa_version?query=Nallapati%2C%20R.%20McFarland%2C%20D.%20Manning%2C%20C.%20Unsupervised%20learning%20of%20topic%20specific%20influences%20of%20hyperlinked%20documents%202011) [GScholar](https://scholar.google.co.uk/scholar?q=Nallapati%2C%20R.%20McFarland%2C%20D.%20Manning%2C%20C.%20Unsupervised%20learning%20of%20topic%20specific%20influences%20of%20hyperlinked%20documents%202011) [Scite](https://engine.scholarcy.com/scite_url?query=Nallapati%2C%20R.%20McFarland%2C%20D.%20Manning%2C%20C.%20Unsupervised%20learning%20of%20topic%20specific%20influences%20of%20hyperlinked%20documents%202011)
+
+[^Page_et+al_1999_a]: Page, L.; Brin, S.; Motwani, R.; and Winograd, T. 1999. The pagerank citation ranking: Bringing order to the web. Technical Report 1999-66, Stanford InfoLab. [[Page_et+al_PagerankCitationRankingBringingOrder_1999]] [OA](https://scholar.google.co.uk/scholar?q=Page%2C%20L.%20Brin%2C%20S.%20Motwani%2C%20R.%20Winograd%2C%20T.%20The%20pagerank%20citation%20ranking%3A%20Bringing%20order%20to%20the%20web%201999) [GScholar](https://scholar.google.co.uk/scholar?q=Page%2C%20L.%20Brin%2C%20S.%20Motwani%2C%20R.%20Winograd%2C%20T.%20The%20pagerank%20citation%20ranking%3A%20Bringing%20order%20to%20the%20web%201999) 
+
+[^Sun_et+al_2009_a]: Sun, C.; Gao, B.; Cao, Z.; and Li, H. 2009. HTM: a topic model for hypertexts. In Empirical Methods in Natural Language Processing. [[Sun_et+al_HtmTopicModelHypertexts_2009]] [OA](https://engine.scholarcy.com/oa_version?query=Sun%2C%20C.%20Gao%2C%20B.%20Cao%2C%20Z.%20Li%2C%20H.%20HTM%3A%20a%20topic%20model%20for%20hypertexts%202009) [GScholar](https://scholar.google.co.uk/scholar?q=Sun%2C%20C.%20Gao%2C%20B.%20Cao%2C%20Z.%20Li%2C%20H.%20HTM%3A%20a%20topic%20model%20for%20hypertexts%202009) [Scite](https://engine.scholarcy.com/scite_url?query=Sun%2C%20C.%20Gao%2C%20B.%20Cao%2C%20Z.%20Li%2C%20H.%20HTM%3A%20a%20topic%20model%20for%20hypertexts%202009)
+
+[^Teufel_et+al_2006_a]: Teufel, S.; Siddharthan, A.; and Tidhar, D. 2006. Automatic classification of citation function. In Proceedings of the 2006 Conference on Empirical Methods in Natural Language Processing. [[Teufel_et+al_AutomaticClassificationCitationFunction_2006]] [OA](https://engine.scholarcy.com/oa_version?query=Teufel%2C%20S.%20Siddharthan%2C%20A.%20Tidhar%2C%20D.%20Automatic%20classification%20of%20citation%20function%202006) [GScholar](https://scholar.google.co.uk/scholar?q=Teufel%2C%20S.%20Siddharthan%2C%20A.%20Tidhar%2C%20D.%20Automatic%20classification%20of%20citation%20function%202006) [Scite](https://engine.scholarcy.com/scite_url?query=Teufel%2C%20S.%20Siddharthan%2C%20A.%20Tidhar%2C%20D.%20Automatic%20classification%20of%20citation%20function%202006)
+
+[^Wong_et+al_2009_a]: Wong, C.; Thiesson, B.; Meek, C.; and Blei, D. 2009. Markov topic models. In Artificial Intelligence and Statistics. [[Wong_et+al_MarkovTopicModels_2009]] [OA](https://engine.scholarcy.com/oa_version?query=Wong%2C%20C.%20Thiesson%2C%20B.%20Meek%2C%20C.%20Blei%2C%20D.%20Markov%20topic%20models%202009) [GScholar](https://scholar.google.co.uk/scholar?q=Wong%2C%20C.%20Thiesson%2C%20B.%20Meek%2C%20C.%20Blei%2C%20D.%20Markov%20topic%20models%202009) [Scite](https://engine.scholarcy.com/scite_url?query=Wong%2C%20C.%20Thiesson%2C%20B.%20Meek%2C%20C.%20Blei%2C%20D.%20Markov%20topic%20models%202009)
+
+[^Zhu_et+al_2013_a]: Zhu, X.; Turney, P.; Lemire, D.; and Vellino, A. 2013. Measuring academic influence: Not all citations are equal. submitted to Journal of the Association for Information Science and Technology (JASIST). [[Zhu_et+al_MeasuringAcademicInfluenceCitationsEqual_2013]] [OA](https://engine.scholarcy.com/oa_version?query=Zhu%2C%20X.%20Turney%2C%20P.%20Lemire%2C%20D.%20Vellino%2C%20A.%20Measuring%20academic%20influence%3A%20Not%20all%20citations%20are%20equal.%20submitted%20to%202013) [GScholar](https://scholar.google.co.uk/scholar?q=Zhu%2C%20X.%20Turney%2C%20P.%20Lemire%2C%20D.%20Vellino%2C%20A.%20Measuring%20academic%20influence%3A%20Not%20all%20citations%20are%20equal.%20submitted%20to%202013) [Scite](https://engine.scholarcy.com/scite_url?query=Zhu%2C%20X.%20Turney%2C%20P.%20Lemire%2C%20D.%20Vellino%2C%20A.%20Measuring%20academic%20influence%3A%20Not%20all%20citations%20are%20equal.%20submitted%20to%202013)
+
