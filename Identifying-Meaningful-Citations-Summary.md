@@ -1,6 +1,6 @@
 # [Identifying Meaningful Citations](http://ai2-website.s3.amazonaws.com/publications/ValenzuelaHaMeaningfulCitations.pdf)
 
-## [[Marco Valenzuela]]; [[Vu Ha]]; [[Oren Etzioni]]
+## Marco Valenzuela, Vu Ha, Oren Etzioni
 
 ### 2014
 
