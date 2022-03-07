@@ -1,5 +1,3 @@
-[[Valenzuela_et+al_IdentifyingMeaningfulCitations_2014]]
-
 # [Identifying Meaningful Citations]()
 
 ## [[Marco Valenzuela]]; [[Vu Ha]]; [[Oren Etzioni]]
